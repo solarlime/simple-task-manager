@@ -40,7 +40,7 @@ export default class App {
         }
         return !item.innerText.toLowerCase().includes(event.target.value.toLowerCase());
       }).forEach((item) => item.classList.add('hide'));
-    if (Array.from(this.notPinned.children).length === Array.from(this.notPinned.querySelectorAll('li.hide')).length) {
+    if ((Array.from(this.notPinned.children).length === Array.from(this.notPinned.querySelectorAll('li.hide')).length) && (event.target.value)) {
       document.querySelector('div.modal-1').classList.remove('hide');
     }
   }
