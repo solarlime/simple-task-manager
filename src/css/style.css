@@ -7,7 +7,8 @@ body {
 }
 
 .header-title {
-    margin-top: 60px;
+    padding-top: 60px;
+    padding-bottom: 30px;
 }
 
 #form {
@@ -20,6 +21,7 @@ body {
     min-width: auto;
     height: 38px;
     padding: 0 20px;
+    margin: 16px 0;
     box-sizing: border-box;
 }
 
