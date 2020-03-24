@@ -6,6 +6,10 @@ body {
     font-family: Ubuntu, Arial, sans-serif;
 }
 
+.header-title {
+    margin-top: 60px;
+}
+
 #form {
     display: flex;
     flex-direction: column;
@@ -79,6 +83,22 @@ body {
 
 .pinned .pushpin{
     transform: rotate(45deg);
+}
+
+.modal {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: auto;
+    left: 5%;
+    top: 10px;
+    box-sizing: border-box;
+    padding: 5px;
+    text-align: center;
+    font-size: 14px;
+    border: crimson solid 2px;
 }
 
 .hide {
