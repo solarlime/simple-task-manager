@@ -1,0 +1,88 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    max-width: max-content;
+    font-family: Ubuntu, Arial, sans-serif;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+#input {
+    min-width: auto;
+    height: 38px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 20px;
+    margin-top: 0;
+}
+
+.item:not(:first-child) {
+    margin-top: 10px;
+}
+
+.item-style {
+    border: crimson solid 1px;
+    border-radius: 20px;
+}
+
+.pinned, .not-pinned {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+}
+
+.no-pinned-tasks {
+    padding-left: 20px;
+}
+
+.no-tasks {
+    padding-left: 20px;
+}
+
+.buttons {
+    display: flex;
+}
+
+.remove, .pushpin {
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    font-size: 30px;
+    color: crimson;
+    cursor: pointer;
+}
+
+.remove, .pushpin, .pinned .pushpin:hover {
+    opacity: 0.3;
+}
+
+.pushpin {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.remove:hover, .pushpin:hover, .pinned .pushpin{
+    opacity: 1;
+}
+
+.pinned .pushpin{
+    transform: rotate(45deg);
+}
+
+.hide {
+    display: none;
+}
+
+
