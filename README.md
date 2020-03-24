@@ -2,7 +2,7 @@
 
 # Simple task manager
 
-###Features:
+### Features:
 - Add / remove your tasks
 - Pin important tasks to top & unpin them
 - Delete old tasks
