@@ -14,11 +14,10 @@ export default class App {
   }
 
   init() {
-    this.form.reset();
     this.tasks = this.fetch();
     this.update();
-
-    this.input.addEventListener('keydown', this.listenInput.bind(this));
+    this.input.addEventListener('input', this.listenInput.bind(this));
+    this.input.addEventListener('keydown', this.listenInputEnter.bind(this));
     this.notPinned.addEventListener('click', this.listen.bind(this, 'remove', this.notPinned));
     this.notPinned.addEventListener('click', this.listen.bind(this, 'pushpin', this.notPinned));
     this.pinned.addEventListener('click', this.listen.bind(this, 'pushpin', this.pinned));
@@ -33,14 +32,33 @@ export default class App {
   }
 
   listenInput(event) {
+    document.querySelector('div.modal-1').classList.add('hide');
+    Array.from(this.notPinned.children)
+      .filter((item) => {
+        if (item.innerText.toLowerCase().includes(event.target.value.toLowerCase())) {
+          item.classList.remove('hide');
+        }
+        return !item.innerText.toLowerCase().includes(event.target.value.toLowerCase());
+      }).forEach((item) => item.classList.add('hide'));
+    if (Array.from(this.notPinned.children).length === Array.from(this.notPinned.querySelectorAll('li.hide')).length) {
+      document.querySelector('div.modal-1').classList.remove('hide');
+    }
+  }
+
+  listenInputEnter(event) {
+    document.querySelector('div.modal-2').classList.add('hide');
     if (event.key === 'Enter') {
       event.preventDefault();
-      const newTask = new Task(id(), this.input.value, false);
-      newTask.add(this.tasks);
-      this.form.reset();
+      if (this.input.value.trim()) {
+        const newTask = new Task(id(), this.input.value, false);
+        newTask.add(this.tasks);
+      } else {
+        document.querySelector('div.modal-2').classList.remove('hide');
+      }
       this.update();
     }
   }
+
 
   listen(action, list, event) {
     if (event.target.classList.contains(action)) {
@@ -90,8 +108,10 @@ export default class App {
   }
 
   clear() {
+    this.form.reset();
     this.noPinned.classList.remove('hide');
     this.noTasks.classList.remove('hide');
+    document.querySelector('div.modal-1').classList.add('hide');
     Array.from(this.pinned.children).forEach((item) => item.remove());
     Array.from(this.notPinned.children).forEach((item) => item.remove());
   }
