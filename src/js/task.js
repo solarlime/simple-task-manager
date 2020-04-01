@@ -6,7 +6,6 @@ export default class Task {
     this.isPinned = isPinned;
     this.pinned = document.querySelector('ul.pinned');
     this.notPinned = document.querySelector('ul.not-pinned');
-    this.render();
   }
 
   render() {
@@ -26,12 +25,7 @@ export default class Task {
     }
   }
 
-  add(data) {
-    data.push({
-      id: this.id,
-      name: this.name,
-      isPinned: this.isPinned,
-    });
-    localStorage.setItem('tasks', JSON.stringify(data));
+  getInfoBack() {
+    return { id: this.id, name: this.name, isPinned: this.isPinned };
   }
 }

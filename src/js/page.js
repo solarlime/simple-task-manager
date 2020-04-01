@@ -50,8 +50,9 @@ export default class App {
     if (event.key === 'Enter') {
       event.preventDefault();
       if (this.input.value.trim()) {
+        // eslint-disable-next-line no-unused-vars
         const newTask = new Task(id(), this.input.value, false);
-        newTask.add(this.tasks);
+        this.add(newTask.getInfoBack());
       } else {
         document.querySelector('div.modal-2').classList.remove('hide');
       }
@@ -80,6 +81,11 @@ export default class App {
     }
   }
 
+  add(data) {
+    this.tasks.push(data);
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+  }
+
   remove(item) {
     this.tasks = this.tasks.filter((sample) => sample.id !== item.id);
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
@@ -101,8 +107,8 @@ export default class App {
         this.noTasks.classList.add('hide');
       }
       this.tasks.forEach((item) => {
-        // eslint-disable-next-line no-unused-vars
         const newTask = new Task(item.id, item.name, item.isPinned);
+        newTask.render();
       });
     }
   }
