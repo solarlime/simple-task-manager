@@ -75,16 +75,18 @@ body {
 }
 
 .pushpin {
-    font-size: 20px;
+    font-size: 28px;
+    font-weight: bolder;
     margin-left: 10px;
+    color: olive;
 }
 
-.remove:hover, .pushpin:hover, .pinned .pushpin{
+.remove:hover, .pushpin:hover, .pinned .pushpin {
     opacity: 1;
 }
 
-.pinned .pushpin{
-    transform: rotate(45deg);
+.pinned .pushpin {
+
 }
 
 .modal {

@@ -23,11 +23,13 @@ export default class Task {
     item.setAttribute('id', `${this.id}`);
     item.innerText = `${this.name}`;
     item.innerHTML += '<div class="buttons">\n'
-      + '  <div class="pushpin">&#128204;</div>\n'
-      + '  <div class="remove">\u2716</div>\n'
+      + '  <div class="pushpin" alt="Pin item">+</div>\n'
+      + '  <div class="remove" alt="Remove item">\u2716</div>\n'
       + '</div>\n';
     if (this.isPinned) {
       item.querySelector('div.remove').classList.add('hide');
+      item.querySelector('div.pushpin').innerText = '–';
+      item.querySelector('div.pushpin').setAttribute('alt', 'Unpin item');
       this.pinned.appendChild(item);
     } else {
       this.notPinned.appendChild(item);
