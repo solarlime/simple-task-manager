@@ -24,7 +24,7 @@ export default class Task {
     item.innerText = `${this.name}`;
     item.innerHTML += '<div class="buttons">\n'
       + '  <div class="pushpin" alt="Pin item">+</div>\n'
-      + '  <div class="remove" alt="Remove item">\u2716</div>\n'
+      + '  <div class="remove" alt="Remove item">×</div>\n'
       + '</div>\n';
     if (this.isPinned) {
       item.querySelector('div.remove').classList.add('hide');

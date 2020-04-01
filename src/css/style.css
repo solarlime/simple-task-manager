@@ -65,7 +65,8 @@ body {
     height: 28px;
     line-height: 28px;
     text-align: center;
-    font-size: 30px;
+    font-size: 36px;
+    font-weight: bolder;
     color: crimson;
     cursor: pointer;
 }
@@ -75,18 +76,12 @@ body {
 }
 
 .pushpin {
-    font-size: 28px;
-    font-weight: bolder;
     margin-left: 10px;
     color: olive;
 }
 
 .remove:hover, .pushpin:hover, .pinned .pushpin {
     opacity: 1;
-}
-
-.pinned .pushpin {
-
 }
 
 .modal {
