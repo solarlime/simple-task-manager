@@ -101,6 +101,7 @@ body {
     text-align: center;
     font-size: 14px;
     border: crimson solid 2px;
+    background-color: white;
 }
 
 .hide {
