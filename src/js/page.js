@@ -2,7 +2,17 @@
 import * as id from 'uniqid';
 import Task from './task';
 
+/**
+ * Простое приложение для управления задачами.
+ * Задачи можно добавлять, удалять, закреплять.
+ * Реализован поиск задач по списку незакреплённых.
+ * Хранение осуществляется в localStorage
+ */
 export default class App {
+  /**
+   * Начальная точка работы приложения.
+   * Определяем ключевые переменные.
+   */
   constructor() {
     this.form = document.getElementById('form');
     this.input = document.getElementById('input');
@@ -13,6 +23,11 @@ export default class App {
     this.init();
   }
 
+  /**
+   * Иниццализируем массив задач. Обновляем
+   * страницу для последующей отрисовки.
+   * Добавляем обработчики событий
+   */
   init() {
     this.tasks = this.fetch();
     this.update();
@@ -23,6 +38,12 @@ export default class App {
     this.pinned.addEventListener('click', this.listen.bind(this, 'pushpin', this.pinned));
   }
 
+  /**
+   * Получаем список задач, хранящийся в виде массива объектов
+   * в localStorage (в виде строки). В случае, если localStorage
+   * пуст, возвращаем пустой массив
+   * @returns {[]}
+   */
   fetch() {
     const tasks = JSON.parse(localStorage.getItem('tasks'));
     if (tasks) {
@@ -31,6 +52,12 @@ export default class App {
     return [];
   }
 
+  /**
+   * Обработчик события на ввод строки поиска. При каждом изменении идёт
+   * проверка на наличие среди незакреплённых задач. В случае отсутствия
+   * совпадений появляется модальное окно с соответствующим сообщением
+   * @param event
+   */
   listenInput(event) {
     document.querySelector('div.modal-1').classList.add('hide');
     Array.from(this.notPinned.children)
@@ -45,6 +72,13 @@ export default class App {
     }
   }
 
+  /**
+   * Обработчик события на добавление новой задачи. Строка очищается
+   * от лишних пробелов. Создаётся и добавляется новая задача. В случае,
+   * если строка после очистки пуста, появляется модальное окно
+   * с соответствующим сообщением
+   * @param event
+   */
   listenInputEnter(event) {
     document.querySelector('div.modal-2').classList.add('hide');
     if (event.key === 'Enter') {
@@ -60,7 +94,13 @@ export default class App {
     }
   }
 
-
+  /**
+   * Обработчик события на кнопки действий: удалить задачу,
+   * закрепить и открепить задачу. Вызывает соответствующие методы
+   * @param action - удалить, закрепить или открепить задачу
+   * @param list - целевой список (закреплённые|незакреплённые)
+   * @param event
+   */
   listen(action, list, event) {
     if (event.target.classList.contains(action)) {
       Array.from(list.children).forEach((item) => {
@@ -81,22 +121,40 @@ export default class App {
     }
   }
 
+  /**
+   * Метод добавляет в localStorage новую задачу
+   * @param data - Объект вида { id, name, isPinned }
+   */
   add(data) {
     this.tasks.push(data);
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 
+  /**
+   * Метод удаляет нужную задачу, производя поиск по id задачи
+   * @param item - элемент списка незакреплённых задач
+   */
   remove(item) {
     this.tasks = this.tasks.filter((sample) => sample.id !== item.id);
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 
+  /**
+   * Метод закрепляет и открепляет нужную задачу, производя поиск по isPinned
+   * @param item - элемент списка задач
+   * @param pinState - состояние задачи (pinned: true|unpinned: false)
+   */
   pinUnpin(item, pinState) {
     item.remove();
     this.tasks.find((sample) => sample.id === item.id).isPinned = pinState;
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 
+  /**
+   * Метод обновления страницы.
+   * Вызывает метод очистки страницы
+   * Вызывает метод отрисовки задач из списка.
+   */
   update() {
     this.clear();
     if (this.tasks) {
@@ -113,6 +171,10 @@ export default class App {
     }
   }
 
+  /**
+   * Метод очистки страницы
+   * Устанавливает изначальное состояние для модальных окон и формы.
+   */
   clear() {
     this.form.reset();
     this.noPinned.classList.remove('hide');

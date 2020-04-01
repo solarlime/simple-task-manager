@@ -1,5 +1,11 @@
 /* eslint-disable class-methods-use-this */
 export default class Task {
+  /**
+   * Определяем ключевые переменные.
+   * @param id - id задачи
+   * @param name - имя задачи
+   * @param isPinned - состояние задачи (закреплена|не закреплена)
+   */
   constructor(id, name, isPinned) {
     this.id = id;
     this.name = name;
@@ -8,6 +14,9 @@ export default class Task {
     this.notPinned = document.querySelector('ul.not-pinned');
   }
 
+  /**
+   * Метод отрисовки новой задачи
+   */
   render() {
     const item = document.createElement('li');
     item.setAttribute('class', 'item item-style');
@@ -25,6 +34,10 @@ export default class Task {
     }
   }
 
+  /**
+   * Метод возвращает объект с данными задачи
+   * @returns {{isPinned: boolean, name: string, id: string}}
+   */
   getInfoBack() {
     return { id: this.id, name: this.name, isPinned: this.isPinned };
   }
