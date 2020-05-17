@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Top tasks</title>
+<link rel="shortcut icon" href="favicon.png"><link href="main.css" rel="stylesheet"></head>
+<body>
+<header class="header">
+    <h1 class="header-title">Top tasks</h1>
+</header>
+<div class="form-container">
+    <form id="form">
+        <label for="input">Add new or find existing task here</label>
+        <input type="text" id="input" class="item-style" placeholder="Введите текст">
+    </form>
+</div>
+<div class="pinned-container">
+    <p>Pinned:</p>
+    <span class="no-pinned-tasks">No pinned tasks</span>
+    <ul class="pinned">
+    </ul>
+</div>
+
+<div class="not-pinned-container">
+    <p>All tasks:</p>
+    <span class="no-tasks">No tasks</span>
+    <ul class="not-pinned">
+    </ul>
+</div>
+
+<div class="modal modal-1 hide">
+    No item found!<br>Try again or add a new one using 'Enter'!
+</div>
+<div class="modal modal-2 hide">
+    An error occurred!<br>Maybe you've entered an empty string. Try again!
+</div>
+<script type="text/javascript" src="bundle.js"></script></body>
+</html>
