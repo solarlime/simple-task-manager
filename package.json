@@ -1,5 +1,5 @@
 {
-  "name": "ahj-homework-3.2",
+  "name": "simple-task-manager",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/solarlime/ahj-homework-3.2.git"
+    "url": "git+https://github.com/solarlime/simple-task-manager.git"
   },
   "author": "solarlime",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/solarlime/ahj-homework-3.2/issues"
+    "url": "https://github.com/solarlime/simple-task-manager/issues"
   },
-  "homepage": "https://github.com/solarlime/ahj-homework-3.2#readme",
+  "homepage": "https://github.com/solarlime/simple-task-manager#readme",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
